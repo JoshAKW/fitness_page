@@ -1,0 +1,51 @@
+{% extends 'base.html' %} 
+{% block content %}
+
+{% for message in get_flashed_messages() %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      {{message}}
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      ></button>
+    </div>
+{% endfor %} 
+
+
+<h1></h1> <br>
+
+
+    <div class="shadow p-3 mb-5 bg-body-tertiary rounded">
+
+    <h4>{{ workout.title }}</h4>
+    <small>
+    {{ workout.date_posted }} 
+    </small> <br> <br>
+
+    {{ workout.exercise1 }} <br>
+    {{ workout.exercise2 }} <br>
+    {{ workout.exercise3 }} <br>
+    {{ workout.exercise4 }} <br>
+    {{ workout.exercise5 }} <br>
+    {{ workout.exercise6 }} <br>
+    {{ workout.exercise7 }} <br>
+    {{ workout.exercise8 }} <br>
+    {{ workout.exercise9 }} <br>
+    {{ workout.exercise10 }} <br>
+    {{ workout.exercise11 }} <br>
+    {{ workout.exercise12 }} <br>
+    <br> 
+    </div>
+    
+   <a href="{{ url_for ('workouts') }}" class="btn btn-outline-secondary btn-sm">Back to Workouts</a>&nbsp;&nbsp;
+
+   {% if workout.worker_id == current_user.id %}
+
+   <a href="{{ url_for ('edit_workout', id=workout.id) }}" class="btn btn-outline-secondary btn-sm">Edit Workout</a> &nbsp; <a href="{{ url_for ('delete_workout', id=workout.id) }}" class="btn btn-outline-danger btn-sm">Delete Workout</a>
+   
+   {% endif %}
+    
+
+{% endblock %}

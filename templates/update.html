@@ -1,0 +1,52 @@
+{% extends 'base.html' %} 
+{% block content %}
+  {% for message in get_flashed_messages() %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      Hey {{name}} - {{message}}
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      ></button>
+    </div>
+  {% endfor %} 
+
+  {% if id == current_user.id %} 
+  
+
+        <h1>Update User.</h1>
+        <br />
+   
+      <div class="shadow p-3 mb-5 bg-body-tertiary rounded">
+        <form action="/update/{{ name_to_update.id }}" method="POST">
+          <!-- can go to BootStrap to see form synax, in this case only using form-label -->
+          {{ form.hidden_tag() }}
+
+          {{ form.name.label(class="form-label") }} 
+
+          {{ form.name(class="form-control", value=name_to_update.name) }}
+          <br />
+
+          {{ form.username.label(class="form-label") }} 
+
+          {{ form.username(class="form-control", value=name_to_update.username) }}
+          <br />
+
+          {{ form.email.label(class="form-label") }} 
+
+          {{ form.email(class="form-control", value=name_to_update.email) }}
+        <br />
+
+          {{ form.submit(class="btn btn-success") }}
+
+          <a href="{{ url_for ('delete', id=current_user.id)}}" class="btn btn-danger">Delete</a>
+        </form>
+      </div>
+
+
+  {% endif %}
+
+    
+
+{% endblock %}

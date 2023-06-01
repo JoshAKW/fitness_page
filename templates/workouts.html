@@ -1,0 +1,50 @@
+{% extends 'base.html' %} {% block content %} {% for message in
+get_flashed_messages() %}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  {{ message }}
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+{% endfor %}
+
+<h1></h1>
+<br />
+
+{% for workout in workouts %}
+<div class="shadow p-3 mb-5 bg-body-tertiary rounded">
+  <a href="{{ url_for ('workout', id=workout.id) }}" class="text-success"
+    ><h4>{{ workout.title }}</h4></a
+  >
+  <small>
+    {{ workout.date_posted }}
+  </small>
+  <br />
+  <br />
+
+  <a
+    href="{{ url_for ('workout', id=workout.id) }}"
+    class="btn btn-outline-secondary btn-sm"
+    >View Workout</a
+  >
+
+  {% if workout.worker_id == current_user.id or current_user.id == 1 %}
+  <a
+    href="{{ url_for ('edit_workout', id=workout.id) }}"
+    class="btn btn-outline-secondary btn-sm"
+    >Edit Workout</a
+  >
+  <a
+    href="{{ url_for ('delete_workout', id=workout.id) }}"
+    class="btn btn-outline-danger btn-sm"
+    >Delete Workout</a
+  >
+
+  {% endif %}
+</div>
+
+<br />
+{% endfor %} {% endblock %}

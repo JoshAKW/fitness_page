@@ -1,0 +1,55 @@
+{% extends 'base.html' %} 
+{% block content %}
+
+
+
+  {% for message in get_flashed_messages() %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      {{message}}
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      ></button>
+    </div>
+  {% endfor %} 
+
+  {% if current_user.is_authenticated %}
+
+
+        <h1>Add Forum Discussion.</h1>
+        <br />
+      <div class="shadow p-3 mb-5 bg-body-tertiary rounded">
+        <form action="" method="POST">
+          <!-- can go to BootStrap to see form synax, in this case only using form-label -->
+          {{ form.hidden_tag() }}
+
+          {{ form.title.label(class="form-label") }} 
+
+          {{ form.title(class="form-control") }}
+          <br />
+
+         {{ form.slug.label(class="form-label") }} 
+
+         {{ form.slug(class="form-control") }}
+         <br />
+
+         {{ form.content.label(class="form-label") }} 
+
+         {{ form.content(class="form-control", rows="10") }}
+         <br />
+
+          {{ form.submit(class="btn btn-success") }}
+        </form>
+
+        {{ ckeditor.load()}}
+        {{ ckeditor.config(name='content')}}
+      </div>
+  {% else %}
+<h2>Must be logged in.</h2> <p>Sorry must be logged in to access page</p>
+<a href="{{ url_for('login' )}}">Login Here</a>
+
+  {% endif %}
+
+{% endblock %}

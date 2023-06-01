@@ -1,0 +1,30 @@
+{% extends 'base.html' %} {% block content %} {% for message in
+get_flashed_messages() %}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  {{name}} - {{message}}
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+{% endfor %} {% if name %}
+<h1>This is the {{name}}!</h1>
+<br />
+<img src="{{ url_for('static', filename='images/BicepMuscles.jpg')}}" width="400" />
+<br /><br />
+<p id="demo">...</p>
+
+{% else %}
+<h1>Anatomy</h1>
+<br />
+<form action="" method="POST">
+  <!-- can go to BootStrap to see form synax, in this case only using form-label -->
+  {{ form.hidden_tag() }} {{ form.name.label(class="form-label") }} {{
+  form.name(class="form-control") }}
+  <br />
+  {{ form.submit(class="btn btn-success") }}
+</form>
+
+{% endif %} {% endblock %}

@@ -1,0 +1,99 @@
+{% extends 'base.html' %} 
+{% block content %}
+
+{% for message in get_flashed_messages() %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      {{message}}
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      ></button>
+    </div>
+{% endfor %} 
+
+<h2>Edit Workout</h2> <br>
+
+    <div class="shadow p-3 mb-5 bg-body-tertiary rounded">
+
+        <form action="" method="POST">
+            <!-- can go to BootStrap to see form synax, in this case only using form-label, hidden tag gives us a crf token -->
+            {{ form.hidden_tag() }}  
+  
+            {{ form.title.label(class="form-label") }} 
+  
+            {{ form.title(class="form-control") }}
+            <br />
+            {{ form.exercise1.label(class="form-label") }} 
+
+            {{ form.exercise1(class="form-control") }}
+            <br />
+    
+            {{ form.exercise2.label(class="form-label") }} 
+    
+            {{ form.exercise2(class="form-control") }}
+             <br />
+    
+            {{ form.exercise3.label(class="form-label") }} 
+    
+            {{ form.exercise3(class="form-control") }}
+             <br />
+    
+            {{ form.exercise4.label(class="form-label") }} 
+    
+            {{ form.exercise4(class="form-control") }}
+             <br />
+    
+            {{ form.exercise5.label(class="form-label") }} 
+    
+            {{ form.exercise5(class="form-control") }}
+             <br />
+    
+            {{ form.exercise6.label(class="form-label") }} 
+    
+            {{ form.exercise6(class="form-control") }}
+             <br />
+    
+            {{ form.exercise7.label(class="form-label") }} 
+    
+            {{ form.exercise7(class="form-control") }}
+             <br />
+    
+            {{ form.exercise8.label(class="form-label") }} 
+    
+            {{ form.exercise8(class="form-control") }}
+             <br />
+    
+            {{ form.exercise9.label(class="form-label") }} 
+    
+            {{ form.exercise9(class="form-control") }}
+             <br />
+    
+            {{ form.exercise10.label(class="form-label") }} 
+    
+            {{ form.exercise10(class="form-control") }}
+             <br />
+    
+            {{ form.exercise11.label(class="form-label") }} 
+    
+            {{ form.exercise11(class="form-control") }}
+             <br />
+            
+             {{ form.exercise12.label(class="form-label") }} 
+    
+             {{ form.exercise12(class="form-control") }}
+              <br />
+  
+          
+  
+            {{ form.submit(class="btn btn-success") }} &nbsp;&nbsp;&nbsp;<a href="{{ url_for ('workouts') }}" class="btn btn-outline-secondary btn-sm">Back to workout</a>
+          </form> 
+
+        <!-- {{ ckeditor.load()}}
+        {{ ckeditor.config(name='content')}} -->
+    
+    
+
+
+{% endblock %}

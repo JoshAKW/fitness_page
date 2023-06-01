@@ -1,0 +1,39 @@
+{% extends 'base.html' %} 
+{% block content %}
+  {% for message in get_flashed_messages() %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      {{message}}
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      ></button>
+    </div>
+  {% endfor %} 
+
+    <h1>Login</h1> <br><br>
+
+    
+      <div class="shadow p-3 mb-5 bg-body-tertiary rounded">
+        <form action="" method="POST">
+          <!-- can go to BootStrap to see form synax, in this case only using form-label -->
+          {{ form.hidden_tag() }}
+
+          {{ form.username.label(class="form-label") }} 
+
+          {{ form.username(class="form-control") }}
+          <br />
+
+          {{ form.password.label(class="form-label") }} 
+
+          {{ form.password(class="form-control") }}
+          <br />
+
+         
+
+          {{ form.submit(class="btn btn-success") }}
+        </form>
+      </div>
+     
+{% endblock %}
